@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PLANTILLA LATEX PARA PRESENTACION DE TRABAJOS DE GRADO %%
+%% Formato:                                               %%
+%%         letterpaper: tamaño carta                      %%
+%%         12pt       : letra de tamaño 12                %%
+%%                    : espaciado simple                  %%
+%% Preparado: Oscar Danilo Montoya						  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\documentclass[letterpaper,12pt, oneside]{book}
+\usepackage{TesisUTB}
+\usepackage[utf8]{inputenc}
+
+
+%%%%%%%%%%%%%%%%%%%%% DATOS DEL AUTOR %%%%%%%%%%%%%%%%%%%%%%
+\def\AUTOR{\textbf{Miguel Isaza}}
+\def\TITULO{Aplicación de metodologías de mantenimiento ágil al servicio ALTEM en la UTB}
+%% CUAL METODOLOGÍA??? miguel
+
+
+\def\DIRECTOR{\textbf{Jairo Enrique Serrano Castañeda}, M.Sc. \\ Universidad Tecnológica de Bolívar}
+
+\def\FECHA{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% quitar el 0.
+\renewcommand\thesection{\arabic{section}}
+%\renewcommand*{\bibfont}{\footnotesize}
+
+% tabla de contenidos como seccion
+\makeatletter
+\renewcommand\tableofcontents{
+	\section*{{Tabla de contenidos} %linea importante
+		\@mkboth{
+			\MakeUppercase\contentsname}{\MakeUppercase\contentsname}}
+	\@starttoc{toc}
+}
+\makeatother
+
+% bibliografia como seccion
+\makeatletter
+\renewenvironment{thebibliography}[1]{
+	\section*{Referencias} %linea importante
+	\@mkboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
+	\list{\@biblabel{\@arabic\c@enumiv}}
+	{\settowidth\labelwidth{\@biblabel{#1}}
+		\leftmargin\labelwidth
+		\advance\leftmargin\labelsep
+		\@openbib@code
+		\usecounter{enumiv}
+		\let\p@enumiv\@empty
+		\renewcommand\theenumiv{\@arabic\c@enumiv}}
+	\sloppy
+	\clubpenalty4000
+	\@clubpenalty \clubpenalty
+	\widowpenalty4000
+	\sfcode`\.\@m}
+{\def\@noitemerr
+	{\@latex@warning{Empty `thebibliography' environment}}
+	\endlist}
+\makeatother
+
+% aqui definimos el encabezado
+%\lhead[\thepage/\pageref{LastPage}]{}
+%\chead[Informe]{Proyecto de grado}
+%\rhead[]{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% aqui definimos el pie de pagina
+\lfoot[]{Miguel Isaza - UTB}
+\cfoot[\today]{\today}
+\rfoot[]{UTB}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\pagestyle{fancy}
+
+% margenes
+\setlength{\oddsidemargin}{10mm}
+\setlength{\evensidemargin}{10mm}
+
+\raggedbottom
+
+\begin{document}
+\frontmatter
+\include{Portada}
+\maketitle
+\include{Dedicatoria}
+\include{Agradecimientos}
+\include{Resumen}
+\include{Abstract}
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{Índice general}
+
+\renewcommand{\listtablename}{Índice de tablas}
+\listoftables
+\addcontentsline{toc}{chapter}{Índice de tablas}
+\listoffigures
+\addcontentsline{toc}{chapter}{Índice de figuras}
+\cleardoublepage
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Chapter1}
+\include{Chapter2}
+\include{Chapter3}
+\include{Chapter4}
+\include{chapter5}
+\include{Chapter6}
+\include{Chapter7}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%% - BIBLIOGRAFÍA - %%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{IEEEtran}
+{\footnotesize
+	\bibliography{MyCollection}}
+\addcontentsline{toc}{chapter}{Referencias}
+
+%%%%%%%%%%%%%%%%%%%%%%%% - APÉNDICE - %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\appendix
+%\renewcommand{\appendixpagename}{Apéndices}
+%\renewcommand{\appendixtocname}{Apéndices}
+%\appendixpage
+%\include{ApendiceA}
+%\include{ApendiceB}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}.

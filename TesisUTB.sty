@@ -1,0 +1,120 @@
+%\dfrac{núm}{den}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formato recomendado para las tesis y proyectos de grado:
+%  Programa de Ingeniería Electrica
+%  Universidad Tecnologica de Bolívar
+%  Margenes usando las Normas NTC1486
+%  Bibliografia usando el formato IEEE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{cite}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
+\usepackage{colortbl}
+\definecolor{lgray}{gray}{0.8}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usetikzlibrary{arrows,calc}
+%\tikzset{
+%	%Define standard arrow tip
+%	>=stealth',
+%	%Define style for different line styles
+%	help lines/.style={dashed, thick},
+%	axis/.style={<->},
+%	important line/.style={thick},
+%	connection/.style={thick, dotted},
+%}
+
+
+\chapterfont{\color{blue!30!black}}  % sets colour of chapters
+\sectionfont{\color{blue!35!black}}
+\subsectionfont{\color{blue!40!black}}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{tikz,pgfplots}
+\usepackage[americanvoltage]{circuitikz}
+\usepackage{pgf}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[toc]{appendix}
+\usepackage{longtable}
+\makeindex
+\usepackage[intoc]{nomencl}
+\usepackage{etoolbox}
+\usepackage{ifthen}
+\renewcommand{\nomname}{Nomenclatura y Notaciones}
+\newcommand{\nma}[3][A]{\nomenclature[#1]{#2}{#3}}
+\newcommand{\nmc}[3][C]{\nomenclature[#1]{#2}{#3}}
+\newcommand{\nmf}[3][F]{\nomenclature[#1]{#2}{#3}}
+\newcommand{\nmp}[3][P]{\nomenclature[#1]{#2}{#3}}
+\newcommand{\nmv}[3][V]{\nomenclature[#1]{#2}{#3}}
+\newcommand{\nmx}[3][X]{\nomenclature[#1]{#2}{#3}}
+\newcommand{\nmy}[3][Y]{\nomenclature[#1]{#2}{#3}}
+\makenomenclature
+
+\renewcommand{\nomgroup}[1]{%
+\ifthenelse{\equal{#1}{V}}{\vspace{1cm} \item[\bfseries \large Variables]}{}
+\ifthenelse{\equal{#1}{X}}{\item[\bfseries \normalsize Variables binarias]}{}
+\ifthenelse{\equal{#1}{Y}}{\item[\bfseries \normalsize Variables continuas]}{}
+\ifthenelse{\equal{#1}{C}}{\vspace{1cm} \item[\bfseries \large Conjuntos]}{}
+\ifthenelse{\equal{#1}{F}}{\vspace{2cm} \item[\bfseries \large Funciones]}{}
+\ifthenelse{\equal{#1}{P}}{\vspace{1cm} \item[\bfseries \large Par\'ametros y Sub\'indices]}{}
+\ifthenelse{\equal{#1}{A}}{\item[\bfseries \large Abreviaciones]}{}
+}	
+
+\graphicspath{ {figures/} }
+
+\usepackage[pdftex,
+              bookmarks,
+              bookmarksnumbered=true,
+              bookmarksopen=false,
+              colorlinks,
+              citecolor=blue!30!black,
+              filecolor=blue!30!black,
+              linkcolor=blue!40!black,
+              urlcolor=blue!30!black,
+              pdfauthor={Universidad Tecnol\'ogica de Bol\'var},
+              pdftitle={Trabajo de Grado Ingenier\'ia de Sistemas},
+              pdftoolbar=true,
+              pdfmenubar=true,
+              pdffitwindow = true
+              ]{hyperref}
+
+%----------------------- Margenes (NTC1486)-----------------
+\usepackage[includeheadfoot,dvipdfm]{geometry}
+\geometry{inner={2.5cm},outer={2cm},top={2cm},
+          bottom={2cm},bindingoffset={1cm}}
+%----------------------- Permitir las tildes ---------------
+%\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}					
+%\addto\captionsspanish{%
+%  \renewcommand\contentsname{Índice general}
+%	\renewcommand\bibname{Bibliograf\'ia}
+%	\renewcommand\tablename{Tabla}}
+	
+	
+%-----------------------------------------------------------
+
+\def\UTP{UNIVERSIDAD TECNOL\'OGICA DE BOL\'IVAR}
+\def\Utp{Universidad Tecnol\'ogica de Bol\'ivar}
+
