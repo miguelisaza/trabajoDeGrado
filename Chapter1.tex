@@ -6,23 +6,35 @@ ALTEM se concibe entonces como una herramienta que le debe permitir a Bienestar 
 \section{Justificación}
 Toda institución académica llega a al punto de quiebre en el cual necesita un departamento de bienestar estudiantil, el cual se encarga de vigilar la calidad académica de los estudiantes. Cuando el volumen de estudiantes es muy grande, surge la necesidad de implementar sistemas de información que faciliten a los consejeros estudiantiles llevar un control de estos estudiantes. 
 
-Al ser una necesidad inminente, se han venido implementando sistemas de información que nos brindan soluciones para esta problemática, como lo son XXXXX, YYYYY, ZZZZZ los cuales se venden y distribuyen como un producto comercial.
+Al ser una necesidad inminente, se han venido implementando sistemas de información que nos brindan soluciones para esta problemática, como lo son SATD de Foris, los cuales se venden y distribuyen como un producto comercial.
 
 ALTEM surge como una alternativa a estos sistemas, cuyo valor agregado es su seguimiento en forma de bitácora, lo que hace que la experiencia de usuario sea considerablemente más agradable con respecto a sus iguales.
 
 Durante el desarrollo de ALTEM, se introdujeron diversos patrones y diseños en la arquitectura del software que dificultaron la extensión de este al implementar nuevos requerimientos, además de la presencia de considerables fallas o bugs que complicaban la interacción con el usuario y en consecuencia afectaba negativamente la calidad general del software.
 
-Este proyecto parte de la necesidad de aplicar las metodologías de mantenimiento ágil a la plataforma ALTEM, con el fin de mejorar falencias a nivel de funcionalidad y experiencia de usuario mencionadas anteriormente.
+Este proyecto parte de la necesidad de aplicar las metodologías ágiles en un plan de extensión de la plataforma ALTEM, con el fin de mejorar falencias a nivel de funcionalidad y experiencia de usuario mencionadas anteriormente.
 
 \section{Estado del arte}
+ Debido al gran número de estudiantes que en las últimas décadas han accedido a la Educación Superior, se ha venido implementado de forma gradual en varios países, investigaciones y estrategias para aumentar la retención de estudiantes en este nivel\cite{garinsallan}
 
-(otros proyectos que se hayan hecho de lo mismo
+ En Latinoamérica la investigación ha sido más reciente, aunque ha adquirido en la última década un gran impulso.\cite{SATPaper}
 
-\subsection{Investigaciones Internacionales}
-\subsection{Investigaciones Nacionales}
+\subsection{Productos Internacionales}
 
-\subsection{Antecedentes}
-(antecedentes, otros proyectos y productos existentes que hagan lo mismo, de lo macro a lo micro)
+ \subsubsection{\textit{Frederick Community College}}
+ Durante el año académico 2007-2008 se testeó un Sistema de Alertas Tempranas en ciertos cursos, procedimiento extendido a toda la Universidad una vez adquirida la infraestructura tecnológica para ello. La estrategia se basó en un sitio Web donde los docentes completaban un informe sobre el rendimiento del estudiante. Los profesores disponen de una lista electrónica para identificar y caracterizar los estudiantes que no están asistiendo y/o tienen bajas calificaciones. El sistema provee un formato automático que identifica el problema y hace recomendaciones para la provisión de intervenciones, usualmente sustentada en una entrevista entre el estudiante y su tutor. La información es compartida con el estudiante, siendo su caso asignado a un consejero académico \cite{chapellc} 
+ Los resultados han sido positivos: desde el 2008, el porcentaje de casos exitosos ha subido de 52\% a 66\%.
+ 
+  \subsubsection{\textit{Foris (SATD)}}
+  Foris, empresa con presencia en Latinoamérica (7 países), se dedica al desarrollo de software para gestión académica universitaria. Uno de sus productos es el Sistema de Alerta Temprana de Deserción (SATD), plataforma que basándose en indicadores históricos de deserción, permite predecir la deserción de estudiantes. El análisis que hace el sistema, se basa en un enfoque cuantitativo y cualitativo con una metodología de predicción de la deserción. La Ilustración 1 muestra el flujo de
+  esta metodología
+  El enfoque cuantitativo se sustenta en modelos matemático/estadísticos y de minería de datos, que consideran, entre otras variables las calificaciones de los estudiantes, datos demográficos – contemplados está la definición de factores de riesgo para generar perfiles de alumnos desertores y elaborar planes de apoyo oportuno y específico para cada grupo de estudiantes.\cite{SATPaper}.
+ 
+
+ \subsection{Productos Nacionales}
+   \subsubsection{\textit{Universidad Tecnológica de Pereira}}
+ En el caso de Colombia, un grupo de investigadores ha trabajado 9 años en la exploración de las causas de la deserción estudiantil la Universidad Tecnológica de Pereira y las maneras para contrarrestarlas, probando estrategias de intervención. Esto ha conducido al diseño de un modelo de SAT: en 6 años se disminuyó la deserción de 15 a 10\%. Además ha incentivado que el gobierno fortalezca los programas de fomento a la permanencia en varias IES. \cite{carvajal}
+ 
 \subsection{Marco Teórico}
 (en qué teorías me baso para desarollar el proyecto)
 \subsection{Marco Conceptual}
@@ -40,6 +52,8 @@ Desarrollar un plan de mejoramiento de la aplicación ALTEM para reactivar su us
 \begin{itemize}
     \item Actualizar el algoritmo de autenticación de usuarios (de LDAP a SAVIO)
     \item Conectar, consumir y sincronizar los datos académicos y estudiantiles de ALTEM con el nuevo sistema BANNER de forma automatizada.
+    \item Hacer mejoras en las animaciones del Front-End
+    \item Analizar las falencias en la experiencia de usuario y hacer mejoras en ese aspecto
     \item Resolver las fallas (bugs) presentes en la aplicación.
     \item Hacer refactorización de los módulos que presentan problemas de calidad de código y arquitectura.
     \item Implementar los nuevos requerimientos solicitados el personal de consejería académica

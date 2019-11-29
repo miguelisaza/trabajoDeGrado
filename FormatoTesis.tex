@@ -8,6 +8,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \documentclass[letterpaper,12pt, oneside]{book}
 \usepackage{TesisUTB}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\graphicspath{ {img/} }
 \usepackage[utf8]{inputenc}
 
 
@@ -123,10 +126,10 @@
 \newpage
 %%%%%%%%%%%%%%%%%%%%%% - BIBLIOGRAFÍA - %%%%%%%%%%%%%%%%%%%%%%%%
 
-\bibliographystyle{IEEEtran}
-{\footnotesize
-	\bibliography{MyCollection}}
-\addcontentsline{toc}{chapter}{Referencias}
+
+\include{Referencias}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%% - APÉNDICE - %%%%%%%%%%%%%%%%%%%%%%%%%%
 

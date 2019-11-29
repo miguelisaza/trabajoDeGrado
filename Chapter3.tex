@@ -1,6 +1,31 @@
 \chapter{Diseño y modelado}
 
 \section{Arquitectura}
+ALTEM es una aplicación web de Stack Completo la cual está compuesta por las siguientes tecnologías
+\begin{itemize}
+    \item Front-End: Javascript ES5 con AngularJS 1.6 como Famework
+    \item BackE-Eend: PHP 7.1 con Laravel como Framework.
+    \item Bases de Datos: SQL por MySQL
+\end{itemize}
+
+Su API se comunica con otros sistemas que pertenecen a la universidad, tales como
+
+\begin{itemize}
+    \item LDAP (Actualmente Deprecado)
+    \item SAVIO (Moodle)
+    \item Banner (Oracle)
+\end{itemize}
+
+La versión actual de ALTEM cuenta con la siguiente arquitectura
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/ALTEM.png}
+    \caption{Arquitectura de ALTEM}
+\end{figure}
+
+
+
     \subsection{Herramientas}
         \begin{itemize}
              \item JavaScript
