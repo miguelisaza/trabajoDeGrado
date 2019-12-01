@@ -24,7 +24,7 @@ En la Figura 3.1 Se puede apreciar la Arquitectura de ALTEM y la relacion existe
     \caption{Arquitectura de ALTEM}
 \end{figure}
 
-\subsection{Front-End}
+\subsection{Cliente (Front-End)}
 Al ser una aplicacion web, ALTEM se consume desde el navegador, por medio de un Front-End creado en HTML5, CSS y JavaScript.
 
 La capa de JavaScript está manejada por AngularJS 1.6, el cual nos facilita el desarrollo de las funcionalidades utilizando el patrón MVC el cual es un patrón de arquitectura de software, que separa los datos y la lógica de negocio de una aplicación de su representación, y el módulo encargado de gestionar los eventos y las comunicaciones.
@@ -90,14 +90,104 @@ Las vistas están hechas a través de plantillas HTML5 estilizadas con CSS, las 
 
 La vista también se actualiza por medio de las directivas de AngularJS.
 
-\subsection{Back-End}
+\subsection{Servidor (Back-End)}
 El Back-End es el núcleo de ALTEM, consiste en una app Laravel y PHP7 en la que se encuentra toda la lógica del servidor.
-Al igual que el Front-End, esta aplicación comparte la misma arquitectura MVC, pero orientada al lado del servidor. 
+Al igual que el Front-End, esta aplicación comparte la misma arquitectura MVC, pero orientada al lado del servidor.
 
-También, se encarga de comunicarse con API's de terceros como BANNER y SAVIO, plataformas pertenencientes a los recursos tecnológicos de la Universidad Tecnológica de Bolívar para obtener datos escenciales para su funcionamiento, de los cuales hablaremos más adelante. 
+También, se encarga de comunicarse con API's de terceros como BANNER y SAVIO, plataformas pertenecientes a los recursos tecnológicos de la Universidad Tecnológica de Bolívar para obtener datos esenciales para su funcionamiento, de los cuales hablaremos más adelante. 
 
+\subsubsection{Modelo}
+Para nuestro Back-End, el Modelo es una representación de la estructura de los datos y relaciones que se manejan  base de datos, en clases y objetos que comparten la misma estructura. Esto con el propósito de que se maneje una consistencia entre la base de datos y la API.
 
+Para hacer esa integración posible, se utiliza una API llamada Eloquent, la cual nos permite construir y ejecutar consultas a la base de datos utilizando definiciones y métodos propios del lenguaje. Esto también se conoce como ORM.
 
+Para cada tabla existente en la base de datos, existe un modelo correspondiente en el back-end el cual se representa mediante una Clase como lo muestra el siguiente ejemplo:
+
+\begin{lstlisting}
+namespace App\Models;
+
+class Tabla extends Model
+{
+    protected $table = 'nombre_tabla';
+    
+    // columnas de la tabla
+    protected $fillable = ['columna1', 'columna2', 'columna3'];
+
+    //PK
+    protected $primaryKey= "codigo";
+
+    // Relaciones
+    public function relacion1()
+    {
+        // Ejemplo 1:N
+        return $this->belongsToMany('OtroModelo','FK','FK','FK');
+    }
+
+    public function relacion2(){
+        // Ejemplo 1:1
+        return $this->hasOne('OtroModelo','FK','FK');
+    }
+}
+\end{lstlisting}
+
+Esta clase extiende de Model, la cual es una clase implementada por Laravel para manejar las relaciones entre tablas. Esa clase posee varios metodos como los observados previamente.
+
+\subsubsection{Controlador}
+En el caso del Back-End, los controladores son clases que poseen los métodos que ejecutan la lógica de la aplicación y hacen los cambios en la base de datos al llamar a los Modelos
+
+Una clase controladora se compone de la siguiente manera:
+
+\begin{lstlisting}
+namespace App\Http\Controllers;
+
+// importamos Modelo relacionado con el controlador
+use \Models\Tabla;
+
+class Acciones extends Controller
+{
+    public function __construct()
+    {
+        // Usamos middlewares necesarios
+        $this->middleware('cors');
+    }
+
+    public function obtener_todos()
+    {
+       $datos = Tabla::all();
+        return response()->json($datos);
+    }
+    
+     public function obtener_por_codigo($codigo)
+    {
+        $datos_codigo = Tabla::find($codigo);
+        return response()->json($datos_codigo);
+    }
+    
+      public function eliminar_por_codigo($id)
+    {
+        $datos_de_id = Tabla::find($id);
+        $datos_de_id->delete();
+        return response()->json(["mensaje" => "Eliminado con Exito"]);
+    }
+}
+\end{lstlisting}
+
+En este ejemplo, podemos observar como la la clase Acciones posee varios métodos que llaman a Modelo y ejecutan varios métodos sobre este. Estos metodos representan consultas SQL que modifican los datos en la base de datos.
+Al final de las instrucciones, se retornan los datos solicitados o el mensaje por medio de JSON.
+
+\subsubsection{Vista}
+Al ser una API, en este caso la vista no representa ninguna capa de interacción con el usuario sino más bien un conjunto de rutas o endpoints los cuales son consultados mediante HTTP y que son el puente entre el Back-End y el Front-End.
+
+\subsection{Base de Datos}
+Las bases de datos de ALTEM son de tipo SQL, ejecutadas en el motor MySQL X, todas las consultas son manejadas por el ORM del Back-End
+
+Al ser una base de datos Relacional, fue necesario establecer un conjunto de relaciones entre tablas para mantener la consistencia y confiabilidad en los datos utilizados en la aplicación, como se aprecia en la Figura 3.2.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{img/EER.png}
+    \caption{Relación de entidades de la base de datos de  ALTEM}
+\end{figure}
 
 \subsection{Herramientas}
     \begin{itemize}

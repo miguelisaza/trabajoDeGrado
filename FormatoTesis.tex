@@ -12,6 +12,40 @@
 \usepackage{graphicx}
 \graphicspath{ {img/} }
 \usepackage[utf8]{inputenc}
+\usepackage{listings,xcolor}
+\usepackage{inconsolata}
+
+\definecolor{dkgreen}{rgb}{0,.6,0}
+\definecolor{dkblue}{rgb}{0,0,.6}
+\definecolor{dkyellow}{cmyk}{0,0,.8,.3}
+
+\lstset{
+  language        = php,
+  basicstyle      = \small\ttfamily,
+  keywordstyle    = \color{dkblue},
+  stringstyle     = \color{red},
+  identifierstyle = \color{dkgreen},
+  commentstyle    = \color{gray},
+  emph            =[1]{php},
+  emphstyle       =[1]\color{black},
+  emph            =[2]{if,and,or,else},
+  emphstyle       =[2]\color{dkyellow},
+  keywords    ={__halt_compiler,    abstract,   and,    array,
+                    as, break,  callable,   case,   catch,  class,
+                    clone,  const,  continue,   declare,    default,
+                    die,    do, echo,   else,   elseif,
+                    empty,  enddeclare, endfor, endforeach, endif,
+                    endswitch,  endwhile,   eval,   exit,   extends,
+                    final,  finally,    for,    foreach,    function,
+                    global, goto, if,   implements, include,
+                    include_once,   instanceof, insteadof,
+                    interface,  isset, list,    namespace,
+                    new,    or, print, private, protected,  public,
+                    require,    require_once, return,   static,
+                    switch, throw,  trait, try, unset, use, var,
+                    while,  xor,    yield,
+  },
+ }
 
 
 %%%%%%%%%%%%%%%%%%%%% DATOS DEL AUTOR %%%%%%%%%%%%%%%%%%%%%%
