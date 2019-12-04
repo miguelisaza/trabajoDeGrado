@@ -179,8 +179,12 @@ Al final de las instrucciones, se retornan los datos solicitados o el mensaje po
 Al ser una API, en este caso la vista no representa ninguna capa de interacción con el usuario sino más bien un conjunto de rutas o endpoints los cuales son consultados mediante HTTP y que son el puente entre el Back-End y el Front-End.
 
 \subsection{Bases de Datos}
+ALTEM se alimenta de 2 bases de datos \textbf{ALTEM} y \textbf{SIRIUS}
+
 Las bases de datos de ALTEM son de tipo SQL, ejecutadas en el motor MySQL X, todas las consultas son manejadas por el ORM del Back-End
 
+\subsubsection{ALTEM DB}
+En esta base de datos se guarda toda la información relacionada a los procedimientos que se le hacen a los estudiantes que se encuentren en una situación de riesgo.
 Al ser una base de datos Relacional, fue necesario establecer un conjunto de relaciones entre tablas para mantener la consistencia y confiabilidad en los datos utilizados en la aplicación, como se aprecia en la Figura 3.2.
 
 \begin{figure}[H]
@@ -188,6 +192,11 @@ Al ser una base de datos Relacional, fue necesario establecer un conjunto de rel
     \includegraphics[width=1\textwidth]{img/EER.png}
     \caption{Relación de entidades en la base de datos de ALTEM.}
 \end{figure}
+
+\subsubsection{SIRIUS DB}
+SIRIUS es una base de datos que se creó como una copia de los registros estudiantiles en SIRIUS (Ahora BANNER), esta base de datos se sincronizaba por medio de un script que leía los datos en SIRIUS e importaba todo hacia esta base de datos.
+
+Actualmente, SIRIUS evolucionó a BANNER y algunas tablas cambiaron, como por ejemplo la tabla de ESTUDIANTEs y DATOS\_ACADEMICOS, en las que cambió la collation, el tamaño de los datos de algunas columas y los nombres de algunas columnas también.
 
 \subsection{Herramientas}
     \begin{itemize}
@@ -198,52 +207,39 @@ Al ser una base de datos Relacional, fue necesario establecer un conjunto de rel
      KANVAN
 
 \section{Plan de trabajo}
-
-\subsection{Prioridad A}
+De acuerdo al estado en el que se encontraba altem se dictaminaron los siguientes nuevos requerimientos:
 \begin{itemize}
- \item Autenticación de usuarios (Savio) (Moodle)
- \item Información del usuario (Savio)
-    \begin{itemize}
-         \item ID
-         \item Foto
-         \item Nombre completo
-         \item ...
-    \end{itemize}
- \item Visualización de contactos (Universidad)
-  \begin{itemize}
-         \item Web
-         \item Twiter, facebook...
-         \item Números telefónicos
-         \item ...
-    \end{itemize}
- \item Visualización de cursos (Savio)
-   \begin{itemize}
-         \item Información del profesor
-         \item Tareas pendientes
-         \item ...
-    \end{itemize}
+    \item Conectar, consumir y sincronizar los datos académicos y estudiantiles de ALTEM con el nuevo sistema BANNER de forma automatizada.
+    \item Hacer mejoras en las animaciones del Front-End
+    \item Analizar las falencias en la experiencia de usuario y hacer mejoras en ese aspecto
+    \item Resolver las fallas (bugs) presentes en la aplicación.
+    \item Hacer refactorización de los módulos que presentan problemas de calidad de código y arquitectura.
+    \item Implementar los nuevos requerimientos solicitados el personal de consejería académica
 \end{itemize}
 
 
-\subsection{Prioridad B}
+Se desarrollaron las siguientes historias de usuario 
+
 \begin{itemize}
- \item Visualización de notas parciales (Banner)
- \item Visualización de horarios de clase (Banner)
- \begin{itemize}
-        \item Nombre del curso
-        \item Hora
-        \item Lugar
-         \item ...
-    \end{itemize}
+    \item Como usuario debo poder iniciar sesión en ALTEM con mis credenciales de SAVIO.
+    \item Como usuario quiero descargar un reporte con mis casos
+    \
 \end{itemize}
 
-\subsection{Prioridad C}
-\begin{itemize}
- \item Visualización mapa UTB (Imagen sobre API google maps)
- \item Centro de notificaciones
-     \begin{itemize}
-         \item Savio
-         \item Web
-         \item Academia
-    \end{itemize}
-\end{itemize}
+(aqui hablo de como desarrollé mi plan de trabajo de acuerdo a una metodología agil)
+
+\subsection{Primera etapa: Identificación de las fallas actuales}
+(aqui se habla acerca de todo el proceso de identificacion de fallas y de como se plantean resolverlas)
+
+\subsection{reunion con consejeros}
+(se menciona la reunion con consejeros y las pautas que se le dieron para crear las historias y reportes de fallas)
+
+\subsection{creacion de gistorias}
+(aqui hablo acerca de como cree cada historia de usuario y de que hice en cada unia)
+
+\subsection{creacion de bugs/requerimientos}
+(aqui hablo acerca de como encontré cada bug y resolvi cada issue )
+
+\subsection{proceso de QA}
+(aqui hablo de como probé la fuincionalidad, como fueron las pruebas unitarias y todo eso)
+
