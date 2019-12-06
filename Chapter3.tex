@@ -172,7 +172,7 @@ class Acciones extends Controller
 }
 \end{lstlisting}
 
-En este ejemplo, podemos observar como la la clase Acciones posee varios métodos que llaman a Modelo y ejecutan varios métodos sobre este. Estos metodos representan consultas SQL que modifican los datos en la base de datos.
+En este ejemplo, podemos observar como la la clase Acciones posee varios métodos que llaman a Modelo y ejecutan varios métodos sobre este. Estos métodos representan consultas SQL que modifican los datos en la base de datos.
 Al final de las instrucciones, se retornan los datos solicitados o el mensaje por medio de JSON.
 
 \subsubsection{Vista}
@@ -198,48 +198,74 @@ SIRIUS es una base de datos que se creó como una copia de los registros estudia
 
 Actualmente, SIRIUS evolucionó a BANNER y algunas tablas cambiaron, como por ejemplo la tabla de ESTUDIANTEs y DATOS\_ACADEMICOS, en las que cambió la collation, el tamaño de los datos de algunas columas y los nombres de algunas columnas también.
 
-\subsection{Herramientas}
-    \begin{itemize}
-         \item JavaScript
-         \item React native
-    \end{itemize}
- \subsection{Modelos de desarrollo}
-     KANVAN
-
 \section{Plan de trabajo}
-De acuerdo al estado en el que se encontraba altem se dictaminaron los siguientes nuevos requerimientos:
+\subsection{Reunión con Consejeros}
+Se realizó una reunión con los consejeros de bienestar universitario y se concluyó en que ALTEM debía ser intervenido para que su funcionamiento volviese a la normalidad, y se plantearon un conjunto de mejoras las cuales pasaron a ser nuevos requerimientos para la aplicación.
+
+De acuerdo a los análisis realizados en ALTEM para determinar su estado funcional y de implementación, se concluyó que la aplicación podría mejorarse si se cumplen estos nuevos requerimientos y se solucionan las fallas que impiden su funcionamiento.
+
+\subsection{Identificación de las Fallas Críticas}
+Se realizó una revisión de ALTEM en el entorno de producción, el cuál se encontraba en estado de abandono y desuso por parte de los consejeros debido a que manifestaron que el sistema se había vuelto imposible de usar debido a fallas en su funcionamiento. 
+En esta revisión inicial se identificaron las principales fallas: 
+
 \begin{itemize}
-    \item Conectar, consumir y sincronizar los datos académicos y estudiantiles de ALTEM con el nuevo sistema BANNER de forma automatizada.
-    \item Hacer mejoras en las animaciones del Front-End
-    \item Analizar las falencias en la experiencia de usuario y hacer mejoras en ese aspecto
+    \item No se podía acceder a la plataforma debido a problemas con la autenticación.
+    \item No se podían crear nuevos registros debido a que el servidor no tenía almacenamiento.
+    \item No se podía obtener información estudiantil debido a que no había conexión con SIRIUS (Ahora BANNER).
+\end{itemize}
+
+Estas fallas hicieron que la aplicación dejara de funcionar en su totalidad, ya que afectaron componentes esenciales de su arquitectura.
+
+\subsection{Definición de Requerimientos}
+Luego de analizar las peticiones de los consejeros y de encontrar todas las fallas en la aplicación, se desarrollaron los siguientes requerimientos:
+
+\begin{itemize}
+    \item Conectar, consumir y sincronizar los datos académicos y estudiantiles de ALTEM con el nuevo sistema BANNER.
+    \item Hacer mejoras en las interfaz de usuario ya que no es posible determinar cuando un elemento está cargando.
+    \item Analizar las falencias en la experiencia de usuario y hacer mejoras en ese aspecto.
     \item Resolver las fallas (bugs) presentes en la aplicación.
     \item Hacer refactorización de los módulos que presentan problemas de calidad de código y arquitectura.
     \item Implementar los nuevos requerimientos solicitados el personal de consejería académica
 \end{itemize}
 
+\subsection{Plan de Desarrollo}
+Se decidió implementar la metodología Ágil SCRUM como estrategia para llevar a cabo el plan de trabajo.
 
-Se desarrollaron las siguientes historias de usuario 
+Se agruparon todas requisitos en Epics, Historias de usuario, y Tareas.
+
+\subsubsection{Epics}
+Todas las tareas e Historias de Usuario se agruparon en dos Epics principales, los cuales se diferencian por prioridad, ya que fue necesario resolver las tareas e historias de usuario de un Epic primero para poder empezar con el siguiente.
+Los Epics creados fueron los siguientes
+
+\subsubsection{Historias de Usuario}
+(aqui hablo acerca de como cree cada historia de usuario y de que hice en cada unia)
+
+Luego de analizar los requerimientos y las recomendaciones planteadas por los consejeros se desarrollaron las siguientes historias de usuario las cuales representan las nuevas funcionalidades a implementar:
 
 \begin{itemize}
-    \item Como usuario debo poder iniciar sesión en ALTEM con mis credenciales de SAVIO.
-    \item Como usuario quiero descargar un reporte con mis casos
-    \
+    \item Como consejero debo poder iniciar sesión en ALTEM con mis credenciales de SAVIO.
+    \item Como consejero debo poder ver los datos estudiantiles que me provee BANNER.
+    \item Como consejero debo poder descargar un reporte de mis casos activos en MS EXCEL.
+    \item Como consejero deseo ver el periodo en el que se presentó algún tipo de riesgo en el estudiante.
+    \item Como consejero deseo poder añadir anotaciones a los estudiantes.
+    \item Como administrador deseo gestionar qué cuáles usuarios de SAVIO pueden acceder a la aplicación.
 \end{itemize}
+
+\subsubsection{Errores de la aplicación}
+
+\begin{itemize}
+    \item Para algunos estudiantes no es posible finalizar una acción.
+    \item No se está mostrando la información de los estudiantes actualizada.
+    \item 
+\end{itemize}
+
+\subsubsection{Plan de desarrollo}
+
 
 (aqui hablo de como desarrollé mi plan de trabajo de acuerdo a una metodología agil)
 
-\subsection{Primera etapa: Identificación de las fallas actuales}
-(aqui se habla acerca de todo el proceso de identificacion de fallas y de como se plantean resolverlas)
-
-\subsection{reunion con consejeros}
-(se menciona la reunion con consejeros y las pautas que se le dieron para crear las historias y reportes de fallas)
-
-\subsection{creacion de gistorias}
-(aqui hablo acerca de como cree cada historia de usuario y de que hice en cada unia)
-
-\subsection{creacion de bugs/requerimientos}
+\subsubsection{creacion de bugs/requerimientos}
 (aqui hablo acerca de como encontré cada bug y resolvi cada issue )
 
-\subsection{proceso de QA}
+\subsection{QA}
 (aqui hablo de como probé la fuincionalidad, como fueron las pruebas unitarias y todo eso)
-

@@ -14,7 +14,11 @@ Este middleware se integra con SAVIO de la siguiente manera:
     \item Si la validacion es exitosa, el middleware lee los datos del usuario y se los envía al controlador de login para que este cree el token de acceso JWT.
 \end{itemize}
 
-(Hacer diagrama)
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/savio_auth.png}
+    \caption{Flujo del Middleware de Autenticación con SAVIO }
+\end{figure}
 
 \section{Sync. BD Externas}
 Se tuvo que desarrollar un sincronizador de datos que recibiera toda la información académica de los estudiantes de la Universidad Tecnológica de Bolívar, por medio de una base de datos proveída por esta entidad la cuál también es de tipo SQL, pero con un vendor diferente (Oracle).
@@ -33,6 +37,11 @@ Este sincronizador obedece los siguientes pasos:
     \item Generar un reporte de la copia de los datos.
 \end{itemize}
 
-(Hacer diagrama)
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/db_sync.png}
+    \caption{Flujo de acciones del sincronizador BANNER-ALTEM }
+\end{figure}
+
 
 Este sincronizador se ejecuta semanalmente con el fin de mantener los datos académicos de los estudiantes al día con BANNER.
