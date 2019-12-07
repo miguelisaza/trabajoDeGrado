@@ -200,13 +200,13 @@ Actualmente, SIRIUS evolucionó a BANNER y algunas tablas cambiaron, como por ej
 
 \section{Plan de trabajo}
 \subsection{Reunión con Consejeros}
-Se realizó una reunión con los consejeros de bienestar universitario y se concluyó en que ALTEM debía ser intervenido para que su funcionamiento volviese a la normalidad, y se plantearon un conjunto de mejoras las cuales pasaron a ser nuevos requerimientos para la aplicación.
+Se realizó una reunión con los consejeros de bienestar universitario y se concluyó en que ALTEM debía ser intervenido para que su funcionamiento volviese a la normalidad, se plantearon un conjunto de mejoras las cuales pasaron a ser nuevos requerimientos para la aplicación.
 
-De acuerdo a los análisis realizados en ALTEM para determinar su estado funcional y de implementación, se concluyó que la aplicación podría mejorarse si se cumplen estos nuevos requerimientos y se solucionan las fallas que impiden su funcionamiento.
+De acuerdo a los análisis realizados en ALTEM para determinar su estado funcional y de implementación, se concluyó que la aplicación podría mejorarse si se cumplen estos nuevos requerimientos y se solucionan las fallas que impiden actualmente su funcionamiento.
 
 \subsection{Identificación de las Fallas Críticas}
 Se realizó una revisión de ALTEM en el entorno de producción, el cuál se encontraba en estado de abandono y desuso por parte de los consejeros debido a que manifestaron que el sistema se había vuelto imposible de usar debido a fallas en su funcionamiento. 
-En esta revisión inicial se identificaron las principales fallas: 
+En esta revisión inicial se identificaron estas fallas: 
 
 \begin{itemize}
     \item No se podía acceder a la plataforma debido a problemas con la autenticación.
@@ -229,43 +229,82 @@ Luego de analizar las peticiones de los consejeros y de encontrar todas las fall
 \end{itemize}
 
 \subsection{Plan de Desarrollo}
-Se decidió implementar la metodología Ágil SCRUM como estrategia para llevar a cabo el plan de trabajo.
+Se decidió implementar la metodología Ágil \textbf{SCRUM} como estrategia para llevar a cabo el plan de trabajo.
+Se agruparon todas requisitos en \textbf{Epics}, \textbf{Historias de Usuario}, y \textbf{Tareas}, las cuales se ejecutaron de la siguiente manera:
 
-Se agruparon todas requisitos en Epics, Historias de usuario, y Tareas.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{3cm}|  }
+     \hline
+     \multicolumn{4}{|c|}{Plan de trabajo SCRUM} \\
+     \hline
+     Por Hacer & En Progreso & En QA & Terminado\\
+     \hline
+     Todas las Tareas pendientes de su realización. & Todas las tareas que se encuentran en progreso (una a la vez). & Todas las tareas que se encuentran en estado de Aseguramiento de la Calidad, agrupadas por historias de usuario o Epic. & Todas las tareas desplegadas en Producción. \\
+     \hline
+    \end{tabular}
+    \label{Plan de trabajo SCRUM}
+    \caption{Dashboard empleada para llevar control de las tareas.}
+\end{table}
 
 \subsubsection{Epics}
-Todas las tareas e Historias de Usuario se agruparon en dos Epics principales, los cuales se diferencian por prioridad, ya que fue necesario resolver las tareas e historias de usuario de un Epic primero para poder empezar con el siguiente.
-Los Epics creados fueron los siguientes
+Todas las tareas e Historias de Usuario se agruparon en tres Epics principales, los cuales se diferencian por prioridad, ya que fue necesario resolver las tareas e historias de usuario de un Epic prioritario para poder continuar con el trabajo.
 
-\subsubsection{Historias de Usuario}
-(aqui hablo acerca de como cree cada historia de usuario y de que hice en cada unia)
-
-Luego de analizar los requerimientos y las recomendaciones planteadas por los consejeros se desarrollaron las siguientes historias de usuario las cuales representan las nuevas funcionalidades a implementar:
-
+Los Epics creados, en orden de prioridad, fueron los siguientes:
 \begin{itemize}
-    \item Como consejero debo poder iniciar sesión en ALTEM con mis credenciales de SAVIO.
-    \item Como consejero debo poder ver los datos estudiantiles que me provee BANNER.
-    \item Como consejero debo poder descargar un reporte de mis casos activos en MS EXCEL.
-    \item Como consejero deseo ver el periodo en el que se presentó algún tipo de riesgo en el estudiante.
-    \item Como consejero deseo poder añadir anotaciones a los estudiantes.
-    \item Como administrador deseo gestionar qué cuáles usuarios de SAVIO pueden acceder a la aplicación.
+    \item \textbf{E1} - Adaptación a APIs Externas.
+    \item \textbf{E2} - Requisitos de Consejería.
+    \item \textbf{E3} - Mejoras de UI/UX.
 \end{itemize}
 
-\subsubsection{Errores de la aplicación}
+\subsubsection{Historias de Usuario y Tareas}
+Luego de analizar los requerimientos y las recomendaciones planteadas por los consejeros se desarrollaron las siguientes Historias de Usuario las cuales representan las nuevas funcionalidades a implementar. A cada Historia de Usuario se le asigna un Epic relacionado y dentro de ella se determinan las tareas específicas para que esa historia se cumpla.
 
 \begin{itemize}
-    \item Para algunos estudiantes no es posible finalizar una acción.
-    \item No se está mostrando la información de los estudiantes actualizada.
-    \item 
+    \item \textbf{Como consejero debo poder iniciar sesión en ALTEM con mis credenciales de SAVIO. (E1)}
+    \begin{itemize}
+        \item Usar SAVIO en vez de LDAP para validar las credenciales del usuario.
+        \item Obtener Datos del usuario en sesión por medio del token de SAVIO.
+    \end{itemize}
+    \item \textbf{Como consejero debo poder ver los datos estudiantiles que me provee BANNER. (E1)}
+    \begin{itemize}
+        \item Back-End: Identificar cuál es la falla entre la sincronización ALTEM y BANNER.
+        \item Externo: Solicitar al personal de TI de la UTB acceso a BANNER en caso de ser necesario.
+        \item Infraestructura: Desarrollar una herramienta que permita importar los datos de BANNER a SAVIO y mantenerlos sincronizados
+        \item Infraestructura: Programar el sincronizador para que se ejecute de forma automática semanalmente.
+    \end{itemize}
+    \item \textbf{Como consejero debo poder descargar un reporte de mis casos activos en MS EXCEL. (E2)}
+    \begin{itemize}
+        \item Front-End: Desarrollar una función en la aplicación que convierta las tablas HTML en tablas de EXCEL y las descargue.
+    \end{itemize}
+    \item \textbf{Como consejero deseo ver el periodo en el que se presentó algún tipo de riesgo en el estudiante. (E2, E3)}.
+    \begin{itemize}
+        \item Front-End: Determinar el período académico a partir de la fecha de creación del riesgo y mostrarlo como una etiqueta.
+    \end{itemize}
+    \item \textbf{Como consejero deseo poder añadir anotaciones a los estudiantes. (E2)}
+        \begin{itemize}
+            \item Front-End: Crear un componente de anotaciones en el panel de detalles del estudiante.
+            \item Back-End: Crear una tabla y un endpoint que consulte y guarde las anotaciones de cada estudiante.
+        \end{itemize}
+    \item \textbf{Como administrador deseo gestionar qué cuáles usuarios de SAVIO pueden acceder a la aplicación. (E3)}
+        \begin{itemize}
+            \item Front-End: Crear una pagina que muestre los usuarios y permita hacer CRUD.
+            \item Back-End: Crear un endpoint para manipular la tabla de usuarios y hacer CRUD.
+        \end{itemize}
+    \item \textbf{Como usuario del sistema me gustaría saber cuándo está cargando una solicitud. (E3)}
+        \begin{itemize}
+            \item Front-End: Mostrar animaciones de carga siempre que exista una solicitud a la API en proceso.
+        \end{itemize}
 \end{itemize}
 
-\subsubsection{Plan de desarrollo}
+\subsection{Aseguramiento de la Calidad (QA)}
+El proceso de Aseguramiento de la Calidad y se realizó por medio de la creación de un entorno de pruebas idéntico al de desarrollo pero utilizando una copia de la base de datos de producción en un estado estable. 
 
+\subsubsection{Pruebas Individuales}
+Se procedió a probar las funcionalidades requeridas por cada una de las historias de usuario de forma independiente,
+una vez que las tareas relacionadas a ellas se encontraran completadas y los cambios integrados al entorno de pruebas.
 
-(aqui hablo de como desarrollé mi plan de trabajo de acuerdo a una metodología agil)
+Estas pruebas consistían en realizar evaluaciones de las funcionalidades ingresando valores o tipos de datos que podrían corromper su funcionamiento y ejecutar casos de uso aislados o poco comunes, al mismo tiempo que se analizaba el comportamiento de la funcionalidad y su rendimiento. 
 
-\subsubsection{creacion de bugs/requerimientos}
-(aqui hablo acerca de como encontré cada bug y resolvi cada issue )
-
-\subsection{QA}
-(aqui hablo de como probé la fuincionalidad, como fueron las pruebas unitarias y todo eso)
+\subsubsection{Pruebas de Regresión}
+Cuando todas las pruebas de las historias de usuario correspondientes a un mismo Epic fueron completadas, se procedía a probar el funcionamiento general de la aplicación con el fin de asegurarse de que no se hayan introducido regresiones o fallas en otros componentes, esta prueba es muy importante porque es la que nos asegura la estabilidad a nivel general de la aplicación. 
